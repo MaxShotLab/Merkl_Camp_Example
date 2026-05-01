@@ -3,21 +3,21 @@
   "rewards": {
     "0x9df7C98C933A0cB409606A3A24B1660a70283542": {
       "epoch-1": {
-        "amount": "40000000000000000000",
+        "amount": "4000000",
         "timestamp": "1777665922"
       },
       "epoch-2": {
-        "amount": "60000000000000000000",
+        "amount": "6000000",
         "timestamp": "1777665922"
       }
     },
     "0x5ef01a9aB62f700BB0BCC0F11f9CF7aa8fc543fd": {
       "epoch-1": {
-        "amount": "50000000000000000000",
+        "amount": "5000000",
         "timestamp": "1777665922"
       },
       "epoch-2": {
-        "amount": "100000000000000000000",
+        "amount": "10000000",
         "timestamp": "1777579522"
       }
     }
