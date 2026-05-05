@@ -1,0 +1,25 @@
+{
+  "rewardToken": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+  "rewards": {
+    "0x077EeF2934Db480826326d880788eCc12d131C6a": {
+      "vaults": {
+        "amount": "1000000",
+        "timestamp": "1778099771"
+      },
+      "refers": {
+        "amount": "1500000",
+        "timestamp": "1778186171"
+      }
+    },
+    "0xDE6D6f23AabBdC9469C8907eCE7c379F98e4Cb75": {
+      "vaults": {
+        "amount": "2000000",
+        "timestamp": "1778024171"
+      },
+      "refers": {
+        "amount": "3500000",
+        "timestamp": "1778085371"
+      }
+    }
+  }
+}
