@@ -6,17 +6,17 @@
         "amount": "4000000",
         "timestamp": "1778043600"
       },
-      "epoch-2": {
+      "referral:e0:hyperliquid:fees_198_805845:manual": {
         "amount": "6000000",
-        "timestamp": "1778272680"
+        "timestamp": "1778112000"
       }
     },
     "0x5ef01a9aB62f700BB0BCC0F11f9CF7aa8fc543fd": {
-      "epoch-1": {
+      "referral:e0:hyperliquid:fees_24_26287193:manual": {
         "amount": "5000000",
-        "timestamp": "1778186280"
+        "timestamp": "1778112000"
       },
-      "epoch-2": {
+      "referral:e7:polymarket-referral:earnings_1_565253:manual": {
         "amount": "10000000",
         "timestamp": "1778359080"
       }
