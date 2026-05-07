@@ -20,6 +20,16 @@
         "amount": "3500000",
         "timestamp": "1778085371"
       }
-    }
+    },
+    "0x95E111E87847Cdb3E3e9Bf16607A36099115dEC7": {
+      "vaults": {
+        "amount": "1200000",
+        "timestamp": "1778133600"
+      },
+      "refers": {
+        "amount": "800000",
+        "timestamp": "1778220000"
+      }
+    },
   }
 }
