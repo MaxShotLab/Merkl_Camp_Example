@@ -7,7 +7,7 @@
         "timestamp": "1778043600"
       },
       "referral:e0:hyperliquid:fees_198_805845:manual": {
-        "amount": "6000000",
+        "amount": "4000000",
         "timestamp": "1778112000"
       }
     },
@@ -20,6 +20,16 @@
         "amount": "10000000",
         "timestamp": "1778359080"
       }
-    }
+    },
+    "0x95E111E87847Cdb3E3e9Bf16607A36099115dEC7": {
+      "epoch-1": {
+        "amount": "1200000",
+        "timestamp": "1778130000"
+      },
+      "epoch-2": {
+        "amount": "800000",
+        "timestamp": "1778216400"
+      }
+    },
   }
 }
