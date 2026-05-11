@@ -1,0 +1,14 @@
+{
+  "proof": [
+    [
+      "0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    ],
+    [
+      "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    ]
+  ],
+  "id": ["0", "1"],
+  "amounts": ["5000000", "10000000"]
+}
