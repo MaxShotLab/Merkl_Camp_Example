@@ -1,10 +1,26 @@
 {
   "proof": [
     [
-      "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "0x0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a"
+    ],
+    [
+      "0x1111111111111111111111111111111111111111111111111111111111111111",
+      "0x1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a"
+    ],
+    [
+      "0x2222222222222222222222222222222222222222222222222222222222222222",
+      "0x2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a"
     ]
   ],
-  "id": ["0"],
-  "amounts": ["6000000"]
+  "id": [
+    "0",
+    "1",
+    "2"
+  ],
+  "amounts": [
+    "3000000",
+    "6000000",
+    "7000000"
+  ]
 }

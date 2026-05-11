@@ -1,8 +1,7 @@
 # Merkl Camp Example — AIT rewards data
 
-Branch `ait-rewards-data`: per-user Merkle proof files derived from
-`sample.json` and `sample2.json`, in the format the AIT backend's
-`GET /v1/users/:wallet/rewards` endpoint expects.
+Branch `ait-rewards-data`: per-user Merkle proof files in the format the AIT
+backend's `GET /v1/users/:wallet/rewards` endpoint expects.
 
 ## Layout
 
@@ -12,66 +11,80 @@ Branch `ait-rewards-data`: per-user Merkle proof files derived from
 
 - `rewardToken` is a folder name (not an on-chain address). Two folders
   here, one per AIT track:
-  - `AIT-vault/` — vault track campaigns
-  - `AIT-refer/` — referral track campaigns
-- `chainId` = `8453` (Base mainnet), matching the source samples.
+  - `AIT-vault/` — vault track campaigns (all epochs)
+  - `AIT-refer/` — referral track campaigns (all epochs)
+- `chainId` = `8453` (Base mainnet).
 - `walletAddress` is EIP-55-checksummed.
+
+**One file per `(wallet, track, chain)`, holding every epoch the wallet has
+claims for** — the file is _not_ split per epoch.
 
 ## File format
 
 ```json
 {
-  "proof":   [["0x...", "0x..."], ...],
-  "id":      ["0", "1", ...],
-  "amounts": ["1000000", "1500000", ...]
+  "proof":   [["0x...", "0x..."], ["0x...", "0x..."]],
+  "id":      ["0", "1"],
+  "amounts": ["1000000", "1500000"]
 }
 ```
 
-Parallel arrays — `proof[i]`, `id[i]`, `amounts[i]` belong to the same
-claim. A 404 means the wallet has no rewards for that token/chain.
+Parallel arrays — `proof[i]`, `id[i]`, `amounts[i]` belong to the same claim.
+
+**`id[i]` is the epoch number** for that claim. A wallet that earned in epoch 0
+and epoch 2 (skipping 1) has `id: ["0", "2"]`. The on-chain distributor's
+`claim(epoch, amount, proof)` call takes the epoch as the leaf key, so
+`id[i]` doubles as the on-chain claim id.
+
+A 404 means the wallet has no rewards for that (track, chain) at all. A file
+existing but missing an entry for some epoch means no claim for that specific
+epoch.
 
 ## ⚠️ Proofs are placeholders
 
-The `proof[]` values in these fixture files are **deterministic
-placeholders** (e.g. `0x1111...1111`), not real Merkle proofs. They
-exist so the backend can exercise the response shape end-to-end.
-Replace with real proofs generated from an actual Merkle tree before
-using on-chain.
+The `proof[]` values in these fixture files are **deterministic placeholders**
+(e.g. `0x1111...1111`), not real Merkle proofs. They exercise the backend's
+response shape end-to-end but won't verify against the distributor on-chain.
+Replace with real proofs from an actual Merkle tree builder before going live.
 
 ## Derivation from source samples
 
 `sample.json` and `sample2.json` use a per-wallet `{reason → {amount,
-timestamp}}` shape. Conversion to the per-user file format:
+timestamp}}` shape. Each `reason` was bucketed into a `(track, epoch)` pair and
+folded into the wallet's file:
 
-| Source reason key                          | Track  |
-|--------------------------------------------|--------|
-| `epoch-N`                                  | vault  |
-| `vaults`                                   | vault  |
-| `refers`                                   | refer  |
-| `referral:*`                               | refer  |
+| Source reason key  | Track  | Epoch source |
+|--------------------|--------|--------------|
+| `epoch-N`          | vault  | `N` |
+| `referral:eN:*`    | refer  | `N` |
+| `vaults`           | vault  | `1` (current) |
+| `refers`           | refer  | `1` (current) |
 
-Per-wallet amounts collapse into `amounts[]` entries with sequential
-`id[]` values starting at `"0"`.
+For coverage, every wallet in these fixtures has claims at multiple epochs so
+the dev server's `?status=active|upcoming|ended` views are populated:
 
-### Wallet → claims map
+### Vault track (`AIT-vault/8453/`)
 
-**`AIT-vault/8453/`:**
-| Wallet | id | amount | source |
-|--------|----|--------|--------|
-| `0x9df7C98C933A0cB409606A3A24B1660a70283542` | 0 | 4000000  | sample.json `epoch-1` |
-| `0x077EeF2934Db480826326d880788eCc12d131C6a` | 0 | 1000000  | sample2.json `vaults` |
-| `0xDE6D6f23AabBdC9469C8907eCE7c379F98e4Cb75` | 0 | 2000000  | sample2.json `vaults` |
-| `0x95E111E87847Cdb3E3e9Bf16607A36099115dEC7` | 0 | 1200000  | sample2.json `vaults` |
+| Wallet | e0 | e1 | e2 | e3 | e4 |
+|---|---|---|---|---|---|
+| `0x077EeF2934Db480826326d880788eCc12d131C6a` | 500,000   | 1,000,000 | 2,000,000 |  |  |
+| `0x95E111E87847Cdb3E3e9Bf16607A36099115dEC7` | 700,000   | 1,200,000 | 1,500,000 | 1,800,000 |  |
+| `0x9df7C98C933A0cB409606A3A24B1660a70283542` | 2,000,000 | 4,000,000 | 5,000,000 | 6,000,000 | 8,000,000 |
+| `0xDE6D6f23AabBdC9469C8907eCE7c379F98e4Cb75` | 1,000,000 | 2,000,000 | 3,000,000 |  |  |
 
-**`AIT-refer/8453/`:**
-| Wallet | id | amount | source |
-|--------|----|--------|--------|
-| `0x9df7C98C933A0cB409606A3A24B1660a70283542` | 0 | 6000000  | sample.json `referral:e0:hyperliquid:...` |
-| `0x5ef01a9aB62f700BB0BCC0F11f9CF7aa8fc543fd` | 0 | 5000000  | sample.json `referral:e0:hyperliquid:...` |
-| `0x5ef01a9aB62f700BB0BCC0F11f9CF7aa8fc543fd` | 1 | 10000000 | sample.json `referral:e7:polymarket-referral:...` |
-| `0x077EeF2934Db480826326d880788eCc12d131C6a` | 0 | 1500000  | sample2.json `refers` |
-| `0xDE6D6f23AabBdC9469C8907eCE7c379F98e4Cb75` | 0 | 3500000  | sample2.json `refers` |
-| `0x95E111E87847Cdb3E3e9Bf16607A36099115dEC7` | 0 | 800000   | sample2.json `refers` |
+### Refer track (`AIT-refer/8453/`)
+
+| Wallet | e0 | e1 | e2 | e3 |
+|---|---|---|---|---|
+| `0x077EeF2934Db480826326d880788eCc12d131C6a` | 800,000   | 1,500,000 | 2,200,000 |  |
+| `0x5ef01a9aB62f700BB0BCC0F11f9CF7aa8fc543fd` | 5,000,000 |   *(skipped)* | 8,000,000 |  |
+| `0x95E111E87847Cdb3E3e9Bf16607A36099115dEC7` | 400,000   | 800,000   | 1,100,000 |  |
+| `0x9df7C98C933A0cB409606A3A24B1660a70283542` | 3,000,000 | 6,000,000 | 7,000,000 |  |
+| `0xDE6D6f23AabBdC9469C8907eCE7c379F98e4Cb75` | 1,800,000 | 3,500,000 | 4,500,000 | 5,500,000 |
+
+Amounts are in USDC base units (6 decimals); the `0x5ef0…` refer entry
+intentionally skips e1 to exercise the "wallet has no claim for this epoch"
+path.
 
 ## Using with the backend
 
@@ -80,8 +93,7 @@ Per-wallet amounts collapse into `amounts[]` entries with sequential
 GITHUB_RAW_BASE=https://raw.githubusercontent.com/MaxShotLab/Merkl_Camp_Example/ait-rewards-data
 ```
 
-The campaign registry (`AIT-backend/config/merkl-campaigns.yaml`) must
-have entries whose `rewardToken` matches a folder name (`AIT-vault` or
-`AIT-refer`), `chainId` = `8453`, and `rewardTokenAddress` set to the
-on-chain reward token (USDC on Base = `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`,
-6 decimals).
+In `AIT-backend/config/merkl-campaigns.yaml`, every vault campaign uses
+`rewardToken: AIT-vault` and every refer campaign uses `rewardToken: AIT-refer`
+— the per-campaign `epoch` field selects which entry inside the wallet's file
+to return.
