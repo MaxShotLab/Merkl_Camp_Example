@@ -63,28 +63,28 @@ folded into the wallet's file:
 For coverage, every wallet in these fixtures has claims at multiple epochs so
 the dev server's `?status=active|upcoming|ended` views are populated:
 
+Amounts below are shown as **human AIT** (the on-chain values in the JSON files
+are `× 10^18` — AIT has 18 decimals). The `0x5ef0…` refer entry intentionally
+skips e1 to exercise the "wallet has no claim for this epoch" path.
+
 ### Vault track (`AIT-vault/8453/`)
 
 | Wallet | e0 | e1 | e2 | e3 | e4 |
 |---|---|---|---|---|---|
-| `0x077EeF2934Db480826326d880788eCc12d131C6a` | 500,000   | 1,000,000 | 2,000,000 |  |  |
-| `0x95E111E87847Cdb3E3e9Bf16607A36099115dEC7` | 700,000   | 1,200,000 | 1,500,000 | 1,800,000 |  |
-| `0x9df7C98C933A0cB409606A3A24B1660a70283542` | 2,000,000 | 4,000,000 | 5,000,000 | 6,000,000 | 8,000,000 |
-| `0xDE6D6f23AabBdC9469C8907eCE7c379F98e4Cb75` | 1,000,000 | 2,000,000 | 3,000,000 |  |  |
+| `0x077EeF2934Db480826326d880788eCc12d131C6a` | 0.5 AIT | 1.0 AIT | 2.0 AIT |   |   |
+| `0x95E111E87847Cdb3E3e9Bf16607A36099115dEC7` | 0.7 AIT | 1.2 AIT | 1.5 AIT | 1.8 AIT |   |
+| `0x9df7C98C933A0cB409606A3A24B1660a70283542` | 2.0 AIT | 4.0 AIT | 5.0 AIT | 6.0 AIT | 8.0 AIT |
+| `0xDE6D6f23AabBdC9469C8907eCE7c379F98e4Cb75` | 1.0 AIT | 2.0 AIT | 3.0 AIT |   |   |
 
 ### Refer track (`AIT-refer/8453/`)
 
 | Wallet | e0 | e1 | e2 | e3 |
 |---|---|---|---|---|
-| `0x077EeF2934Db480826326d880788eCc12d131C6a` | 800,000   | 1,500,000 | 2,200,000 |  |
-| `0x5ef01a9aB62f700BB0BCC0F11f9CF7aa8fc543fd` | 5,000,000 |   *(skipped)* | 8,000,000 |  |
-| `0x95E111E87847Cdb3E3e9Bf16607A36099115dEC7` | 400,000   | 800,000   | 1,100,000 |  |
-| `0x9df7C98C933A0cB409606A3A24B1660a70283542` | 3,000,000 | 6,000,000 | 7,000,000 |  |
-| `0xDE6D6f23AabBdC9469C8907eCE7c379F98e4Cb75` | 1,800,000 | 3,500,000 | 4,500,000 | 5,500,000 |
-
-Amounts are in USDC base units (6 decimals); the `0x5ef0…` refer entry
-intentionally skips e1 to exercise the "wallet has no claim for this epoch"
-path.
+| `0x077EeF2934Db480826326d880788eCc12d131C6a` | 0.8 AIT | 1.5 AIT  | 2.2 AIT |   |
+| `0x5ef01a9aB62f700BB0BCC0F11f9CF7aa8fc543fd` | 5.0 AIT | *(skipped)* | 8.0 AIT |   |
+| `0x95E111E87847Cdb3E3e9Bf16607A36099115dEC7` | 0.4 AIT | 0.8 AIT  | 1.1 AIT |   |
+| `0x9df7C98C933A0cB409606A3A24B1660a70283542` | 3.0 AIT | 6.0 AIT  | 7.0 AIT |   |
+| `0xDE6D6f23AabBdC9469C8907eCE7c379F98e4Cb75` | 1.8 AIT | 3.5 AIT  | 4.5 AIT | 5.5 AIT |
 
 ## Using with the backend
 
