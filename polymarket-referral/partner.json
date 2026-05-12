@@ -10,7 +10,7 @@
   },
   "users": [
     {
-      "proxyWallet": "0x077eef2934db480826326d880788ecc12d131c6a",
+      "proxyWallet": "0x28ad0cd8d3fe8fc65e933032a26eb859cc727be4",
       "name": "joyious.eth",
       "pseudonym": "Inferior-Norm-Pepper",
       "createdAt": "2026-04-20T02:53:07Z",
@@ -18,7 +18,7 @@
       "earnings": 4.821456
     },
     {
-      "proxyWallet": "0x5ef01a9ab62f700bb0bcc0f11f9cf7aa8fc543fd",
+      "proxyWallet": "0xcf10b9f9abff90db435f372f21f4c532640aa015",
       "name": null,
       "pseudonym": "Curious-Wave-Falcon",
       "createdAt": "2026-04-23T11:18:42Z",
@@ -26,7 +26,7 @@
       "earnings": 3.215008
     },
     {
-      "proxyWallet": "0x95e111e87847cdb3e3e9bf16607a36099115dec7",
+      "proxyWallet": "0x203c863d881d8a212dbd6d6a9730826c3a792b0c",
       "name": "anders.eth",
       "pseudonym": "Quiet-Stone-Otter",
       "createdAt": "2026-04-26T18:02:11Z",
@@ -34,7 +34,7 @@
       "earnings": 4.811055
     },
     {
-      "proxyWallet": "0x9df7c98c933a0cb409606a3a24b1660a70283542",
+      "proxyWallet": "0x4ae12c8a9b5d1e0f7c3b6a8d9e2f0c1b5a3d6e7f",
       "name": null,
       "pseudonym": "Brave-Cliff-Mole",
       "createdAt": "2026-05-02T07:44:33Z",
@@ -42,7 +42,7 @@
       "earnings": 0
     },
     {
-      "proxyWallet": "0xde6d6f23aabbdc9469c8907ece7c379f98e4cb75",
+      "proxyWallet": "0x8f0e2d3c4b5a6978d6c5b4a39f2e1d0c8b7a6f5e",
       "name": "maxshot.eth",
       "pseudonym": "Silent-Drift-Wren",
       "createdAt": "2026-05-08T15:30:19Z",
