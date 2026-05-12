@@ -1,0 +1,53 @@
+{
+  "partner": {
+    "address": "0xe3294b24285c49ec6a2910c680024b3f5a9456ac",
+    "totalSignups": 5,
+    "totalEarnings": 12.847519,
+    "activeTraders": 3,
+    "isActive": true,
+    "isReferralRestricted": false,
+    "isReferralWhitelisted": false
+  },
+  "users": [
+    {
+      "proxyWallet": "0x077eef2934db480826326d880788ecc12d131c6a",
+      "name": "joyious.eth",
+      "pseudonym": "Inferior-Norm-Pepper",
+      "createdAt": "2026-04-20T02:53:07Z",
+      "campaign": "Skyge",
+      "earnings": 4.821456
+    },
+    {
+      "proxyWallet": "0x5ef01a9ab62f700bb0bcc0f11f9cf7aa8fc543fd",
+      "name": null,
+      "pseudonym": "Curious-Wave-Falcon",
+      "createdAt": "2026-04-23T11:18:42Z",
+      "campaign": "Skyge",
+      "earnings": 3.215008
+    },
+    {
+      "proxyWallet": "0x95e111e87847cdb3e3e9bf16607a36099115dec7",
+      "name": "anders.eth",
+      "pseudonym": "Quiet-Stone-Otter",
+      "createdAt": "2026-04-26T18:02:11Z",
+      "campaign": "Skyge",
+      "earnings": 4.811055
+    },
+    {
+      "proxyWallet": "0x9df7c98c933a0cb409606a3a24b1660a70283542",
+      "name": null,
+      "pseudonym": "Brave-Cliff-Mole",
+      "createdAt": "2026-05-02T07:44:33Z",
+      "campaign": null,
+      "earnings": 0
+    },
+    {
+      "proxyWallet": "0xde6d6f23aabbdc9469c8907ece7c379f98e4cb75",
+      "name": "maxshot.eth",
+      "pseudonym": "Silent-Drift-Wren",
+      "createdAt": "2026-05-08T15:30:19Z",
+      "campaign": null,
+      "earnings": 0
+    }
+  ]
+}
