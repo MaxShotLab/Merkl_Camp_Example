@@ -1,0 +1,16 @@
+{
+  "amounts": [
+    "2684897690685"
+  ],
+  "proof": [
+    [
+      "0x063c9e72c9c2bdfdfdead655bab9ddb57567962ecfb4b4d11a99ba8410aa3ef2",
+      "0x11e01f846460038156089b4a9b0db467ee6a809230b06f1e09583a502f94fdb8",
+      "0xf8200eaa7eaf6638a331df27bda729d154a194723e835b10fc976707459be83e",
+      "0xda33764793a7e038bc8679148b45841a1c26e3d79e352a4e835bb0e9ea32a6a6"
+    ]
+  ],
+  "id": [
+    "0"
+  ]
+}
